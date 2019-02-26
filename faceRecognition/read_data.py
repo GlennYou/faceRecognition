@@ -1,12 +1,11 @@
-
 import os
 import cv2
 import numpy as np
+from pick_face import endwith
 
-from read_img import endwith
 
-#输入一个文件路径，对其下的每个文件夹下的图片读取，并对每个文件夹给一个不同的Label
-#返回一个img的list,返回一个对应label的list,返回一下有几个文件夹（有几种label)
+# 输入一个文件路径，对其下的每个文件夹下的图片读取，并对每个文件夹给一个不同的Label
+# 返回一个img的list,返回一个对应label的list,返回一下有几个文件夹（有几种label)
 
 def read_file(path):
     img_list = []
@@ -19,8 +18,7 @@ def read_file(path):
          child_path = os.path.join(path, child_dir)
 
          for dir_image in os.listdir(child_path):
-             print(child_path)
-             if endwith(dir_image,'jpg'):
+             if endwith(dir_image, 'jpg'):
                 img = cv2.imread(os.path.join(child_path, dir_image))
                 resized_img = cv2.resize(img, (IMG_SIZE, IMG_SIZE))
                 recolored_img = cv2.cvtColor(resized_img,cv2.COLOR_BGR2GRAY)
@@ -42,9 +40,8 @@ def read_name_list(path):
     return name_list
 
 
-
 if __name__ == '__main__':
-    img_list,label_lsit,counter = read_file('F:\myProject\pictures\dataset\yangyang')
-    print (counter)
+    img_list, label_lsit, counter = read_file('../pictures/dataset')
+    print(img_list)
 
 
