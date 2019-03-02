@@ -1,14 +1,20 @@
+'''
+利用电脑摄像头进行人脸截图，作为raw pictrure，
+截取的照片经过灰度化处理，为数据集做准备
+'''
+
 import cv2
 import datetime
 
 # 训练识别人脸
-out_path = r'F:\GraduationProject\pictures\myface'
+out_path = r'F:\GraduationProject\pictures\raw_pictures\wuyifan'
+
 
 cap = cv2.VideoCapture(0)
 faceIndex = 0
 while True:
     if faceIndex < 10000:
-        if faceIndex % 100 ==0 :
+        if faceIndex % 100 == 0:
             print('已截图 %d 张' %faceIndex)
 
         # get a frame
